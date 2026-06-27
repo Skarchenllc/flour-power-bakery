@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Flour Power Bakery</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Georgia', serif;
+      color: #3b2a1a;
+      background: #fffdf8;
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    :root {
+      --cream:  #fffdf8;
+      --warm:   #fdf3e3;
+      --tan:    #e8c99a;
+      --brown:  #7c4f2a;
+      --dark:   #3b2a1a;
+      --accent: #c0392b;
+      --white:  #ffffff;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(255, 253, 248, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--tan);
+    }
+    .nav-logo { font-size: 1.5rem; font-weight: bold; color: var(--brown); letter-spacing: 0.03em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; font-size: 0.95rem; }
+    .nav-links a { color: var(--dark); transition: color 0.2s; font-style: italic; }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── Hero Banner ── */
+    .about-hero {
+      margin-top: 72px;
+      background: linear-gradient(135deg, #fdf3e3 0%, #f5dfc0 100%);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      border-bottom: 3px solid var(--tan);
+    }
+    .about-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      color: var(--brown);
+      margin-bottom: 0.6rem;
+    }
+    .about-hero p {
+      font-size: 1.15rem;
+      color: var(--dark);
+      max-width: 600px;
+      margin: 0 auto;
+      font-style: italic;
+    }
+
+    /* ── Main Content ── */
+    main { max-width: 860px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+
+    .section { margin-bottom: 3.5rem; }
+    .section h2 {
+      font-size: 1.75rem;
+      color: var(--brown);
+      border-left: 5px solid var(--accent);
+      padding-left: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .section p { margin-bottom: 0.9rem; font-size: 1.05rem; }
+
+    /* ── Values Grid ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .value-card {
+      background: var(--warm);
+      border: 1px solid var(--tan);
+      border-radius: 10px;
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+    }
+    .value-card .icon { font-size: 2.4rem; margin-bottom: 0.6rem; }
+    .value-card h3 { color: var(--brown); margin-bottom: 0.4rem; font-size: 1.1rem; }
+    .value-card p { font-size: 0.93rem; color: #5a3e28; }
+
+    /* ── Team ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--tan);
+      border-radius: 10px;
+      padding: 1.8rem 1.2rem;
+      text-align: center;
+    }
+    .team-card .avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--tan);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 0.9rem;
+    }
+    .team-card h3 { color: var(--brown); font-size: 1.05rem; margin-bottom: 0.25rem; }
+    .team-card .role { font-style: italic; font-size: 0.88rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .team-card p { font-size: 0.88rem; color: #5a3e28; }
+
+    /* ── Timeline ── */
+    .timeline { margin-top: 1.2rem; border-left: 3px solid var(--tan); padding-left: 1.5rem; }
+    .timeline-item { position: relative; margin-bottom: 1.6rem; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.9rem; top: 0.4rem;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 2px var(--tan);
+    }
+    .timeline-item .year { font-weight: bold; color: var(--brown); font-size: 1rem; }
+    .timeline-item p { font-size: 0.97rem; }
+
+    /* ── CTA ── */
+    .cta-banner {
+      background: var(--brown);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cta-banner h2 { font-size: 1.8rem; margin-bottom: 0.6rem; color: var(--white); border: none; padding: 0; }
+    .cta-banner p { margin-bottom: 1.3rem; opacity: 0.9; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta-btn:hover { background: #a93226; transform: translateY(-2px); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--dark);
+      color: #c9b49a;
+      text-align: center;
+      padding: 1.8rem 1rem;
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--tan); }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="nav-logo">Flour <span>Power</span> Bakery</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Our Bakes</a>
+      <a href="about.html" style="color:#c0392b;">About</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="about-hero">
+    <h1>Our Story 🥐</h1>
+    <p>From a tiny kitchen in Portland to your neighbourhood table — baked with love, every single day.</p>
+  </div>
+
+  <main>
+
+    <!-- Origin Story -->
+    <section class="section">
+      <h2>How It All Started</h2>
+      <p>
+        Flour Power Bakery was born in 2008 out of a cramped apartment kitchen and an obsession with the perfect sourdough loaf.
+        Founder <strong>Maria Hartwell</strong> spent two years experimenting with wild-yeast starters before her bread earned
+        a devoted following at the local Saturday farmers' market.
+      </p>
+      <p>
+        Word spread faster than warm butter on a croissant. By 2011 we had our first brick-and-mortar shop on Elm Street,
+        and we've been growing — carefully, joyfully — ever since.
+      </p>
+    </section>
+
+    <!-- Core Values -->
+    <section class="section">
+      <h2>What We Believe In</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="icon">🌾</div>
+          <h3>Real Ingredients</h3>
+          <p>No artificial preservatives — ever. We source heritage flour from family mills within 150 miles.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">⏳</div>
+          <h3>Slow Fermentation</h3>
+          <p>Our doughs rest 18–48 hours. Good bread can't be rushed, and we refuse to hurry flavour.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">♻️</div>
+          <h3>Zero-Waste Baking</h3>
+          <p>Day-old loaves go to local shelters. Spent grain feeds a nearby urban farm's composting programme.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">🤝</div>
+          <h3>Community First</h3>
+          <p>We sponsor school baking clubs, host free workshops, and price every loaf so no one goes without.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section">
+      <h2>Our Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="year">2008</div>
+          <p>Maria perfects her 48-hour sourdough starter in a Portland apartment.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2010</div>
+          <p>First stall at the Saturday Farmers' Market — sells out in 40 minutes.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2011</div>
+          <p>Flour Power Bakery opens its Elm Street shop. The croissant waitlist begins.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2015</div>
+          <p>Launches the Community Loaf programme — pay-what-you-can pricing every Thursday.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2019</div>
+          <p>Named <em>Best Independent Bakery</em> by Portland Food &amp; Drink Magazine.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2024</div>
+          <p>New production kitchen opens, tripling capacity while keeping every recipe hand-crafted.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet the Team -->
+    <section class="section">
+      <h2>Meet the Bakers</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="avatar">👩‍🍳</div>
+          <h3>Maria Hartwell</h3>
+          <div class="role">Founder &amp; Head Baker</div>
+          <p>Sourdough obsessive, farmers'-market veteran, and the reason your Saturday mornings smell amazing.</p>
+        </div>
+        <div class="team-card">
+          <div class="avatar">👨‍🍳</div>
+          <h3>Daniel Osei</h3>
+          <div class="role">Pastry Chef</div>
+          <p>Trained in Lyon, Daniel brings French technique and Ghanaian spice to every laminated dough.</p>
+        </div>
+        <div class="team-card">
+          <div class="avatar">🧑‍🍳</div>
+          <h3>Priya Kapoor</h3>
+          <div class="role">Cake &amp; Dessert Artist</div>
+          <p>Former fine-dining pastry cook who believes celebration cakes should taste as good as they look.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-banner">
+      <h2>Come Say Hello 👋</h2>
+      <p>Stop by the shop, or drop us a message — we'd love to hear from you.</p>
+      <a href="index.html#contact" class="cta-btn">Get in Touch</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Flour Power Bakery &mdash; Baked with 💛 in Portland &nbsp;|&nbsp; <a href="index.html">Home</a></p>
+  </footer>
+
+</body>
+</html>
